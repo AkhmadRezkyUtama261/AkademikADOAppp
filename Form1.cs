@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.
+using System.Windows.Forms;
 
 namespace AkademikADOAppp
 {
@@ -21,7 +21,20 @@ namespace AkademikADOAppp
 
         private void btnConnect(object sender, EventArgs e)
         {
+            try
+            {
+                conn = new SqlConnection(connString);
 
+                conn.Open();
+
+                lblstatus().Text = "Status : Database Connected";
+
+                MessageBox.Show("Koneksi ke database berhasil!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Koneksi Gagal : " + ex.Message)
+            }
         }
 
         private void btnDisconnect(object sender, EventArgs e)
